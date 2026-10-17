@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Chess</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="eyebrow">TACTICAL FANTASY-CHESS VARIANT</div>
+      <h1>WAR <span>CHESS</span></h1>
+    </header>
+
+    <section class="game-layout" aria-label="War Chess spel">
+      <section class="captured-panel captured-black" aria-label="Zwarte stukken die verloren zijn">
+        <h2><span class="side-dot red"></span> LOST PIECES BLACK </h2>
+        <div id="captured-black" class="captured-list"><span class="empty-captured">No losses...yet</span></div>
+      </section>
+
+      <div class="board-frame">
+        
+        <div id="board" class="board" role="grid" aria-label="Schaakbord"></div>
+        
+      </div>
+
+      <section class="captured-panel captured-white" aria-label="Witte stukken die verloren zijn">
+        <h2><span class="side-dot gold"></span> LOST PIECES WHITE </h2>
+        <div id="captured-white" class="captured-list"><span class="empty-captured">No losses...yet</span></div>
+      </section>
+      <section class="history-card">
+          <div class="history-heading"><h2>Move history</h2><span id="move-count">0 Moves</span></div>
+          <ol id="move-history" class="move-history"><li class="history-empty">The battle has yet to commence...</li></ol>
+        </section>
+        <section class="legend-card">
+          <h2>Legend</h2>
+          <p><span class="legend-mark move-mark"></span> Possible move</p>
+          <p><span class="legend-mark capture-mark"></span> Attack/Take</p>
+        </section>
+
+      <aside class="side-panel">
+        
+<section class="multiplayer-card">
+  <h2>Play online</h2>
+
+  <label for="player-name">Your name</label>
+  <input id="player-name" maxlength="20"
+         placeholder="Player name">
+
+  <button id="create-room" type="button">
+    Create room
+  </button>
+
+  <label for="room-code">Roomcode</label>
+  <input id="room-code" maxlength="8"
+         placeholder="Type code here">
+
+  <button id="join-room" type="button">
+    Join Room
+  </button>
+
+  <p id="multiplayer-status" role="status">
+    Not connected with online game.
+  </p>
+
+  <p id="room-info" hidden>
+    Roomcode:
+    <strong id="room-code-display"></strong>
+    <button id="copy-room-code" type="button">
+      Copy
+    </button>
+  </p>
+
+  <p id="player-color"></p>
+  <p id="white-player"></p>
+  <p id="black-player"></p>
+</section>
+
+        <section class="status-card">
+          <div class="section-kicker"> TURN </div>
+          <h2 id="turn">White's turn.</h2>
+          <p id="message" class="message">Select a white piece to start.</p>
+          <button id="reset" type="button">⟳ New game</button>
+        </section>
+        
+      </aside>
+    </section>
+    <p class="note">War Chess is a custom made chess variant. Idea: Adam Vandenbussche (A.K.A.Soapmonkey_2) and Thor Gekeire (A.K.A.Thorture). Coding: Adam Vandenbussche (A.K.A. Soapmonkey_2) with (a lot of) help from ChatGPT </p>
+  </main>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
