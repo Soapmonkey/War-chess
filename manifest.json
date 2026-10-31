@@ -8,12 +8,12 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "Images/White-Knight.png",
+      "src": "Images/White-Bishop.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "Images/White-Knight.png",
+      "src": "Images/White-Bishop.png",
       "sizes": "512x512",
       "type": "image/png"
     }
