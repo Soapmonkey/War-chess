@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>War Chess</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#2563eb">
+
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="eyebrow">TACTICAL FANTASY-CHESS VARIANT</div>
+      <h1>WAR <span>CHESS</span></h1>
+      <button id="rules-button" type="button" class="rules-btn-top">
+     Spelregels
+  </button>
+    </header>
+
+    <section class="game-layout" aria-label="War Chess spel">
+      <section class="captured-panel captured-black" aria-label="Zwarte stukken die verloren zijn">
+        <h2><span class="side-dot red"></span> LOST PIECES BLACK </h2>
+        <div id="captured-black" class="captured-list"><span class="empty-captured">No losses...yet</span></div>
+      </section>
+
+      <div class="board-frame">
+        
+        <div id="board" class="board" role="grid" aria-label="Schaakbord"></div>
+        
+      </div>
+
+      <section class="captured-panel captured-white" aria-label="Witte stukken die verloren zijn">
+        <h2><span class="side-dot gold"></span> LOST PIECES WHITE </h2>
+        <div id="captured-white" class="captured-list"><span class="empty-captured">No losses...yet</span></div>
+      </section>
+      <section class="history-card">
+          <div class="history-heading"><h2>Move history</h2><span id="move-count">0 Moves</span></div>
+          <ol id="move-history" class="move-history"><li class="history-empty">The battle has yet to commence...</li></ol>
+        </section>
+        <section class="legend-card">
+          <h2>Legend</h2>
+          <p><span class="legend-mark move-mark"></span> Possible move</p>
+          <p><span class="legend-mark capture-mark"></span> Attack/Take</p>
+        </section>
+
+      <aside class="side-panel">
+        
+<section class="multiplayer-card">
+  <h2>Play online</h2>
+
+  <label for="player-name">Your name</label>
+  <input id="player-name" maxlength="20"
+         placeholder="Player name">
+
+  <button id="create-room" type="button">
+    Create room
+  </button>
+
+  <label for="room-code">Roomcode</label>
+  <input id="room-code" maxlength="8"
+         placeholder="Type code here">
+
+  <button id="join-room" type="button">
+    Join Room
+  </button>
+
+  <p id="multiplayer-status" role="status">
+    Not connected with online game.
+  </p>
+
+  <p id="room-info" hidden>
+    Roomcode:
+    <strong id="room-code-display"></strong>
+    <button id="copy-room-code" type="button">
+      Copy
+    </button>
+  </p>
+
+  <p id="player-color"></p>
+  <p id="white-player"></p>
+  <p id="black-player"></p>
+</section>
+
+        <section class="status-card">
+          <div class="section-kicker"> TURN </div>
+          <h2 id="turn">White's turn.</h2>
+          <p id="message" class="message">Select a white piece to start.</p>
+          <button id="reset" type="button">⟳ New game</button>
+        </section>
+        
+      </aside>
+    </section>
+    <p class="note">War Chess is a custom made chess variant. Idea: Adam Vandenbussche (A.K.A.Soapmonkey_2) and Thor Gekeire (A.K.A.Thorture). Coding: Adam Vandenbussche (A.K.A. Soapmonkey_2) with (a lot of) help from ChatGPT and Gemini <3 </p>
+  </main>
+  <script type="module" src="script.js"></script>
+ <!-- SPELREGELS POP-UP MODAL -->
+  <div id="rules-modal" class="modal-overlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+    <div class="modal-content" style="background: #1f2937; color: #f3f4f6; padding: 25px; border-radius: 12px; max-width: 550px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-family: Arial, sans-serif; position: relative;">
+      <span id="close-rules" style="position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #9ca3af;">&times;</span>
+      <h2 style="margin-top: 0; color: #60a5fa;">Spelregels: War Chess</h2>
+      
+      <div style="line-height: 1.6; font-size: 14px;">
+        <h3 style="color: #60a5fa; margin-bottom: 5px;">1. De Pion </h3>
+        <p>De pion kan net zoals in gewoon schaken alleen vooruit bewegen en schuin stukken pakken. Wat de pion nog meer kan, is dat hij ook <strong>vooruit een stuk kan nemen</strong>.</p>
+
+        <h3 style="color: #f87171; margin-bottom: 5px; margin-top: 15px;">2. De Toren </h3>
+        <p>Wanneer een Toren verplaatst, laat deze een <strong>verborgen mijn</strong> achter op zijn vertrekveld. Wie over een mijn rijdt of erop landt, activeert een explosie waarbij het stuk verloren gaat.</p>
+        <p>Als een Toren een stuk slaat (of zelf wordt geslagen), ontploffen <strong>beide stukken</strong> direct.</p>
+
+        <h3 style="color: #34d399; margin-bottom: 5px; margin-top: 15px;">3. De Loper </h3>
+        <p>Lopers kunnen een vijandelijk stuk <strong>neerschieten</strong> vanaf een afstand. De loper blijft op zijn eigen vakje staan en het doelwit verdwijnt.</p>
+        <p><em>Let op:</em> na een schot moet deze loper eerst een normale zet doen voordat hij opnieuw kan schieten.</p>
+
+        <h3 style="color: #a78bfa; margin-bottom: 5px; margin-top: 15px;">4. Het Paard </h3>
+        <p>Het paard kan nog steeds alleen in een L-vorm springen, maar kan nu ook <strong>1 vakje dichter of verder landen</strong>.</p>
+
+        <h3 style="color: #fbbf24; margin-bottom: 5px; margin-top: 15px;">5. De Dame </h3>
+        <p>Nadat 1 van haar eigen stukken geslagen is in de vorige beurt, kan de dame een <strong>dame-doorbraak</strong> doen. Op die manier mag ze door het stuk dat ze slaat bewegen. Ze kan daarna nog een ander stuk nemen of gewoon op een verder vakje landen.</p>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
